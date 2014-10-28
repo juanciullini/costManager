@@ -1,0 +1,16 @@
+package com.june.costmanager.classes;
+
+import java.util.UUID;
+
+public class Balance {
+	
+	private double mincoming;
+	private double moutcoming;
+	private UUID mId;
+	public Balance () {
+				
+	}
+	
+	
+
+}

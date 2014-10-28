@@ -1,0 +1,23 @@
+package com.june.costmanager.classes;
+
+public class Balance {
+	
+	private double incoming;
+	private double outcoming;
+	
+	public double getIncoming() {
+		return incoming;
+	}
+	public void setIncoming(double incoming) {
+		this.incoming = incoming;
+	}
+	public double getOutcoming() {
+		return outcoming;
+	}
+	public void setOutcoming(double outcoming) {
+		this.outcoming = outcoming;
+	}
+	
+	
+
+}

@@ -1,0 +1,33 @@
+package com.june.costmanager.classes;
+
+import java.util.UUID;
+
+public class Balance {
+	
+	private UUID mId;
+	private double mincoming;
+	private double moutcoming;
+	
+	public Balance () {
+		mId = UUID.randomUUID();
+	}
+
+	public double getIncoming() {
+		return mincoming;
+	}
+
+	public void setMincoming(double mincoming) {
+		this.mincoming = mincoming;
+	}
+
+	public double getMoutcoming() {
+		return moutcoming;
+	}
+
+	public void setMoutcoming(double moutcoming) {
+		this.moutcoming = moutcoming;
+	}
+	
+	
+
+}

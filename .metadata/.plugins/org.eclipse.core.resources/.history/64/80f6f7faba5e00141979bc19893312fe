@@ -1,0 +1,17 @@
+package com.june.costmanager.fragments;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import com.june.costmanager.classes.Balance;
+
+public class BalanceFragment extends Fragment {
+	private Balance mbalance;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+	mbalance = new Balance();
+	
+	}
+
+}

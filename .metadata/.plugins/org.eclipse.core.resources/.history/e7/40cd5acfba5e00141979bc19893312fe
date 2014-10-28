@@ -1,0 +1,14 @@
+package com.june.costmanager.fragments;
+
+import android.support.v4.app.Fragment;
+
+public class BalanceFragment extends Fragment {
+	private Balance mbalance;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+	mCrime = new Crime();
+	}
+
+}

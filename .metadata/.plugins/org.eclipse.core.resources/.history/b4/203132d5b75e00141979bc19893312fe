@@ -1,0 +1,18 @@
+package com.june.costmanager.classes;
+
+import java.util.Random;
+import java.util.UUID;
+
+public class Balance {
+	
+	private UUID mId;
+	private double mincoming;
+	private double moutcoming;
+	
+	public Balance () {
+		mId = UUID.randomUUID();
+	}
+	
+	
+
+}
