@@ -1,26 +1,18 @@
 package com.june.costmanager;
 
 import com.june.costmanager.fragments.BalanceFragment;
+import com.june.costmanager.fragments.IncomListFragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends SingleFragmentActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        
-        FragmentManager fm = getSupportFragmentManager();
-        Fragment fragment = fm.findFragmentById(R.id.container);
-        
-        if (fragment == null) {
-        	fragment = new BalanceFragment();
-        	fm.beginTransaction().add(R.id.container, fragment).commit();
-        }
-    }
+	@Override
+	protected Fragment createFragment() {
+		return new BalanceFragment();
+	}
 
 }
