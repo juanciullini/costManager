@@ -27,7 +27,11 @@ public class Incoming {
 	public void setId(UUID id) {
 		mId = id;
 	}
-	
-	
-
+	@Override
+	public String toString() {
+		return "Amount: "+mIncom+" Date: "+mIncomDate.toString();
+	}
+	public String getTitle() {
+		return "Income";
+	}
 }
