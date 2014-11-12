@@ -20,6 +20,7 @@ public class IncomList {
 		Random r = new Random();
 		for (int i = 0; i < 100; i++) {
 			Incoming incom = new Incoming();
+			incom.setId(UUID.randomUUID());
 			incom.setIncom(100.0 + (100.0 - 10.0) * r.nextDouble());
 			incom.setIncomDate(new Date());
 			mIncoms.add(incom);

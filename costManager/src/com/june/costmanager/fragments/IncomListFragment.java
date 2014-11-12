@@ -3,17 +3,17 @@ package com.june.costmanager.fragments;
 import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.june.costmanager.IncomeActivity;
 import com.june.costmanager.R;
 import com.june.costmanager.classes.IncomList;
 import com.june.costmanager.classes.Incoming;
@@ -22,6 +22,7 @@ import com.june.costmanager.classes.Incoming;
 public class IncomListFragment extends ListFragment {
 	private ArrayList<Incoming> mIncomes;
 	private static final String TAG = "IncomeListFragment";
+	private static final int REQUEST_INCOME = 1;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,24 @@ public class IncomListFragment extends ListFragment {
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		Incoming income = ((IncomeAdapter)(getListAdapter())).getItem(position);
-		Log.i(TAG, income.toString());
+		// start new incoming class
+		Intent i = new Intent(getActivity(), IncomeActivity.class);
+		i.putExtra(IncomeFragment.EXTRA_INCOME_ID, income.getId());
+		startActivityForResult(i, REQUEST_INCOME);
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		((IncomeAdapter)getListAdapter()).notifyDataSetChanged();
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data){
+		if (requestCode == REQUEST_INCOME) {
+			// Handle result
+			}
+		
 	}
 	
 
@@ -54,7 +72,6 @@ public class IncomListFragment extends ListFragment {
 				convertView = getActivity().getLayoutInflater()
 						.inflate(R.layout.list_item, null);
 			}
-			// Configure the view for this Crime
 			Incoming i = getItem(position);
 			TextView titleTextView =
 				(TextView)convertView.findViewById(R.id.incomeTitle_list_item_TextView);
