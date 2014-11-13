@@ -46,4 +46,8 @@ public class IncomList {
 		return null;
 	}
 	
+	public void setIncome(Incoming incom) {
+		mIncoms.add(incom);
+	}
+	
 }
