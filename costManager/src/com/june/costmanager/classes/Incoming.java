@@ -32,6 +32,6 @@ public class Incoming {
 		return "Amount: "+mIncom+" Date: "+mIncomDate.toString();
 	}
 	public String getTitle() {
-		return "Income";
+		return "Income" + "D: "+mIncom;
 	}
 }

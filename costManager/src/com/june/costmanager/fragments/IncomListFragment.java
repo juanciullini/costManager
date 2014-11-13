@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.june.costmanager.IncomeActivity;
+import com.june.costmanager.IncomePagerActivity;
 import com.june.costmanager.R;
 import com.june.costmanager.classes.IncomList;
 import com.june.costmanager.classes.Incoming;
@@ -39,7 +39,7 @@ public class IncomListFragment extends ListFragment {
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		Incoming income = ((IncomeAdapter)(getListAdapter())).getItem(position);
 		// start new incoming class
-		Intent i = new Intent(getActivity(), IncomeActivity.class);
+		Intent i = new Intent(getActivity(), IncomePagerActivity.class);
 		i.putExtra(IncomeFragment.EXTRA_INCOME_ID, income.getId());
 		startActivityForResult(i, REQUEST_INCOME);
 	}
