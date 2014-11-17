@@ -8,6 +8,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView.FindListener;
 import android.widget.EditText;
@@ -27,7 +28,13 @@ public class DatePicketFragment extends DialogFragment {
 		}
 		
 		Intent i = new Intent();
-		i.putExtra(BALANCE, mAmount);
+		if (mTitle.equals("income")) {
+			i.putExtra(BALANCE, mAmount);
+		} else {
+			mAmount *= -1;
+			i.putExtra(BALANCE, mAmount);
+		}
+		Log.i("Amount", mAmount.toString());
 		
 		getTargetFragment().onActivityResult(getTargetRequestCode(), resultCode, i);
 		

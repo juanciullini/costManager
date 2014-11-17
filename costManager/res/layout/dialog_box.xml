@@ -13,10 +13,7 @@
 	    android:calendarViewShown="false" >
 	</DatePicker>
 	
-    <EditText 
+    <EditText
         android:id="@+id/edit_amount"
-        android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:inputType="numberDecimal" />"
-
+        style="@style/income_amount" />    
 </LinearLayout>

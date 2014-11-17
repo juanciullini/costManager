@@ -12,6 +12,10 @@
     <string name="button_incomes">Incomings</string>
     <string name="button_outcomes">Incomings</string>
     
+    <string name="main_title">COST MANAGER</string>
+    <string name="income_list">income List</string>
+    <string name="income_detail">income Detail</string>
+    
     <string name="income_title">Income</string>
 	<string name="date_picker_title">Date of the Income:</string>
 

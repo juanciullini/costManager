@@ -13,11 +13,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.june.costmanager.IncomeActivity;
+import com.june.costmanager.IncomePagerActivity;
 import com.june.costmanager.R;
-import com.june.costmanager.classes.IncomList;
-import com.june.costmanager.classes.Incoming;
-import com.june.costmanager.fragments.IncomeFragment;
 import com.june.manager.models.Item;
 import com.june.manager.models.lists.ItemList;
 
@@ -42,7 +39,7 @@ public class ItemListFragment extends ListFragment {
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		Item item = ((ItemAdapter)(getListAdapter())).getItem(position);
 		// start new incoming class
-		Intent i = new Intent(getActivity(), IncomeActivity.class);
+		Intent i = new Intent(getActivity(), IncomePagerActivity.class);
 		i.putExtra(ItemFragment.EXTRA_ITEM_ID, item.getId());
 		startActivityForResult(i, REQUEST_ITEM);
 	}
