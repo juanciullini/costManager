@@ -1,22 +1,29 @@
 package com.june.costmanager.fragments;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.UUID;
+
+import org.json.JSONException;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.regions.Regions;
 import com.june.costmanager.IncomeListActivity;
 import com.june.costmanager.R;
 import com.june.costmanager.classes.Balance;
 import com.june.costmanager.classes.IncomList;
+import com.june.costmanager.classes.IncomeJSONSerializer;
 import com.june.costmanager.classes.Incoming;
 
 public class BalanceFragment extends Fragment {
@@ -25,8 +32,13 @@ public class BalanceFragment extends Fragment {
 	private Button mButtonOutcoming;
 	private Button mButtonList;
 	
+	
 	private static final String DIALOG_INCOME = "income";
 	private static final String DIALOG_OUTCOME = "outcome";
+	
+	private static final String FILENAME = "incomes.json";
+	private IncomeJSONSerializer mSerializer;
+	
 	private static final int REQUEST_INCOME = 0;
 	private static final int REQUEST_OUTCOME = 0;
 	
@@ -34,7 +46,6 @@ public class BalanceFragment extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mBalance = new Balance();
-	
 	}
 	/**
 	 * Within onCreateView(…), you explicitly inflate the fragment’s view by calling
@@ -89,12 +100,23 @@ public class BalanceFragment extends Fragment {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data){
 		if(resultCode == 1) {
+			// Ahora lo voy a hacer solo para incoming, para ver como guarda
+			mSerializer = new IncomeJSONSerializer(getActivity(), FILENAME);
 			Incoming income = new Incoming();
+			
 			Double amount = (Double)data.getSerializableExtra(DatePicketFragment.BALANCE);
-			income.setId(UUID.randomUUID());
 			income.setIncom(amount);
-			income.setIncomDate(new Date());
-			IncomList.get(getActivity()).setIncome(income);
+			income.setIncomDate((new Date()).toString());
+			
+			try {
+				mSerializer.saveIncome(income);
+				Log.d("SAVING", "Income saved to file");
+			} catch (Exception e) {
+				Log.d("SAVING", "mmm Problems");
+				e.printStackTrace();
+			} 
+			//realizar en el onPause de la lista de income	
+			//IncomList.get(getActivity()).setIncome(income);
 		} else {
 			return;
 		}

@@ -1,30 +1,33 @@
 package com.june.costmanager.classes;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Random;
 import java.util.UUID;
 
 import android.content.Context;
+import android.util.Log;
 
 public class IncomList {
 	
+	private static final String TAG = "IncomeList";
+	private static final String FILENAME = "incomes.json";
+	
 	private ArrayList<Incoming> mIncoms;
+	private IncomeJSONSerializer mSerializer;
+	
 	private static IncomList sIncomList;
 	private Context mAppContext;
 	
 	private IncomList(Context appContext) {
 		mAppContext = appContext;
-		mIncoms = new ArrayList<Incoming>();
+		mSerializer = new IncomeJSONSerializer(mAppContext, FILENAME);
 		
-		Random r = new Random();
-		for (int i = 0; i < 100; i++) {
-			Incoming incom = new Incoming();
-			incom.setId(UUID.randomUUID());
-			incom.setIncom(100.0 + (100.0 - 10.0) * r.nextDouble());
-			incom.setIncomDate(new Date());
-			mIncoms.add(incom);
+		try {
+			mIncoms = mSerializer.loadIncomes();
+		} catch (Exception e) {
+			mIncoms = new ArrayList<Incoming>();
+			Log.e(TAG, "Error loading crimes: ", e);
 		}
+
 	}
 	
 	public static IncomList get(Context c) {
@@ -48,6 +51,17 @@ public class IncomList {
 	
 	public void setIncome(Incoming incom) {
 		mIncoms.add(incom);
+	}
+	
+	public boolean saveIncomes() {
+		try {
+			mSerializer.saveIncomes(mIncoms);
+			Log.d(TAG, "crimes saved to file");
+			return true;
+		} catch (Exception e) {
+			Log.e(TAG, "Error saving crimes: ", e);
+			return false;
+		}
 	}
 	
 }

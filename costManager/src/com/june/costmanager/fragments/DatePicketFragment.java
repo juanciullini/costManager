@@ -34,8 +34,7 @@ public class DatePicketFragment extends DialogFragment {
 			mAmount *= -1;
 			i.putExtra(BALANCE, mAmount);
 		}
-		Log.i("Amount", mAmount.toString());
-		
+	
 		getTargetFragment().onActivityResult(getTargetRequestCode(), resultCode, i);
 		
 	}
