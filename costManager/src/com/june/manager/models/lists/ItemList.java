@@ -13,10 +13,10 @@ public class ItemList {
 	
 	private ArrayList<Item> mItem;
 	private static ItemList sItemList;
-	private Context mAppContext;
+	//private Context mAppContext;
 	
 	private ItemList(Context appContext) {
-		mAppContext = appContext;
+		//mAppContext = appContext;
 		mItem = new ArrayList<Item>();
 		
 		Random r = new Random();

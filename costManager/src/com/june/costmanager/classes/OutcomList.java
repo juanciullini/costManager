@@ -11,10 +11,8 @@ public class OutcomList {
 	
 	private ArrayList<Outcoming> mOutcoms;
 	private static OutcomList sOutcomList;
-	private Context mAppContext;
 	
 	private OutcomList(Context appContext) {
-		mAppContext = appContext;
 		mOutcoms = new ArrayList<Outcoming>(); 
 		
 		Random r = new Random();

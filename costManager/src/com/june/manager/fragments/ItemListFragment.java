@@ -21,7 +21,7 @@ import com.june.manager.models.lists.ItemList;
 @SuppressLint("NewApi") 
 public class ItemListFragment extends ListFragment {
 	private ArrayList<Item> mItems;
-	private static final String TAG = "ItemsListFragment";
+	//private static final String TAG = "ItemsListFragment";
 	private static final int REQUEST_ITEM = 1;
 	
 	@Override
@@ -65,7 +65,7 @@ public class ItemListFragment extends ListFragment {
 			super(getActivity(), 0, items);
 		}
 		
-		@Override
+		@SuppressLint("InflateParams") @Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			
 			// If we weren't given a view, inflate one

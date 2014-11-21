@@ -16,7 +16,6 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import android.content.Context;
-import android.util.Log;
 
 public class IncomeJSONSerializer {
 	

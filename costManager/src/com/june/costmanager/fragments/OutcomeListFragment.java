@@ -19,6 +19,7 @@ public class OutcomeListFragment extends ListFragment {
 		super.onCreate(savedInstanceState);
 		getActivity().setTitle(R.string.outcoming_title);
 		mOutcome = OutcomList.get(getActivity()).getOutcoms();
+		mOutcome.add(null);
 	}
 
 }

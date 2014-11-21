@@ -3,30 +3,40 @@ package com.june.costmanager.classes;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import com.june.costmanager.helpers.IncomeDataBaseHelper;
+import com.june.costmanager.helpers.IncomeDataBaseHelper.IncomeCursor;
+
 import android.content.Context;
 import android.util.Log;
 
 public class IncomList {
 	
 	private static final String TAG = "IncomeList";
-	private static final String FILENAME = "incomes.json";
+	//private static final String FILENAME = "incomes.json";
 	
 	private ArrayList<Incoming> mIncoms;
 	private IncomeJSONSerializer mSerializer;
+	
+	private IncomeCursor mIncomeCursor;
 	
 	private static IncomList sIncomList;
 	private Context mAppContext;
 	
 	private IncomList(Context appContext) {
 		mAppContext = appContext;
-		mSerializer = new IncomeJSONSerializer(mAppContext, FILENAME);
+		mIncomeCursor = new IncomeDataBaseHelper(mAppContext).queryRuns();
+		
+		/**
+		 * Loads incomes from a JSon file
+		 * mSerializer = new IncomeJSONSerializer(mAppContext, FILENAME);
+
 		
 		try {
 			mIncoms = mSerializer.loadIncomes();
 		} catch (Exception e) {
 			mIncoms = new ArrayList<Incoming>();
 			Log.e(TAG, "Error loading crimes: ", e);
-		}
+		}		 */
 
 	}
 	
@@ -39,6 +49,10 @@ public class IncomList {
 
 	public ArrayList<Incoming> getIncoms() {
 		return mIncoms;
+	}
+	
+	public IncomeCursor getIncomesCursor () {
+		return mIncomeCursor;
 	}
 
 	public Incoming getIncom(UUID id) {

@@ -5,13 +5,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.june.costmanager.R;
 
 public class MainScreenFragment extends Fragment {
-	private Button mButtonIncoming;
-	private Button mButtonOutcoming;
+	//private Button mButtonIncoming;
+	//private Button mButtonOutcoming;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -30,8 +29,8 @@ public class MainScreenFragment extends Fragment {
 		
 		View v = inflater.inflate(R.layout.fragment_main_screen, parent, false);
 		
-		mButtonIncoming = (Button)v.findViewById(R.id.button_incomes);
-		mButtonOutcoming = (Button)v.findViewById(R.id.button_outcomes);
+		//mButtonIncoming = (Button)v.findViewById(R.id.button_incomes);
+		//mButtonOutcoming = (Button)v.findViewById(R.id.button_outcomes);
 
 		return v;
 	}

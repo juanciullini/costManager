@@ -2,10 +2,14 @@ package com.june.costmanager.fragments;
 
 import java.util.UUID;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -14,6 +18,7 @@ import com.june.costmanager.R;
 import com.june.costmanager.classes.IncomList;
 import com.june.costmanager.classes.Incoming;
 
+@TargetApi(11)
 public class IncomeFragment extends Fragment {
 	
 	private Incoming mIncome;
@@ -24,6 +29,12 @@ public class IncomeFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setHasOptionsMenu(true);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			if (NavUtils.getParentActivityName(getActivity()) != null) {
+				getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+			}
+		}
 		
 		UUID incomeId = (UUID)getArguments().getSerializable(EXTRA_INCOME_ID);	
 		mIncome = IncomList.get(getActivity()).getIncom(incomeId);
@@ -58,6 +69,18 @@ public class IncomeFragment extends Fragment {
 	
 	public void returnResult () {
 		getActivity().setResult(Activity.RESULT_OK, null);
+	}
+	
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				if (NavUtils.getParentActivityName(getActivity()) != null) {
+					NavUtils.navigateUpFromSameTask(getActivity());
+				}
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
 	}
 
 }

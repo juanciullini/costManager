@@ -17,6 +17,7 @@
     <string name="income_detail">income Detail</string>
     
     <string name="income_title">Income</string>
+    <string name="show_subtitle">Income Subtitle</string>
 	<string name="date_picker_title">Date of the Income:</string>
 
 </resources>
