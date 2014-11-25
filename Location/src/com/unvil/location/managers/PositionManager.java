@@ -19,13 +19,13 @@ public class PositionManager {
 		mAppContext = appContext;
 		mLocationManager = (LocationManager)mAppContext
 				.getSystemService(Context.LOCATION_SERVICE);
+		Log.i(TAG, "PositionManager Created");
 	}
 	
 	public static PositionManager get(Context c) {
 		if (sPositionManager == null) {
 			// Use the application context to avoid leaking activities
-			sPositionManager = new PositionManager(c.getApplicationContext());
-			Log.i(TAG, "PositionManager Created");
+			sPositionManager = new PositionManager(c.getApplicationContext());	
 		}
 		
 		return sPositionManager;

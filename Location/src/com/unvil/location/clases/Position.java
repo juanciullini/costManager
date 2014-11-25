@@ -1,13 +1,20 @@
 package com.unvil.location.clases;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class Position {
 	
 	private Date mStartDate;
+	private UUID mId;
 	
 	public Position() {
 		mStartDate = new Date();
+		mId = UUID.randomUUID();
+	}
+	
+	public UUID getId () {
+		return mId;
 	}
 	
 	public Date getStartDate() {
