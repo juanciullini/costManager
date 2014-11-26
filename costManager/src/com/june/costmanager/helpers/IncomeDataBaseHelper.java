@@ -1,22 +1,25 @@
 package com.june.costmanager.helpers;
 
 import java.util.UUID;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.june.costmanager.classes.Incoming;
 
 public class IncomeDataBaseHelper extends SQLiteOpenHelper {
 
+	private String TAG = "Sqlite DB";
 	private static final String DB_NAME = "income.sqlite";
 	private static final int VERSION = 1;
 	
 	private static final String TABLE_INCOME = "income";
-	private static final String COLUMN_INCOME_ID = "id";
+	private static final String COLUMN_INCOME_ID = "_id";
 	private static final String COLUMN_INCOME_DATE = "date"; 
 	private static final String COLUMN_INCOME_AMOUNT = "amount";
 	private static final String COLUMN_INCOME_DESCRIPTION = "description";
@@ -29,9 +32,9 @@ public class IncomeDataBaseHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL("create table income (" +
-				"id varchar(20) primary key, date varchar(20), "+
+				"_id varchar(20) primary key, date varchar(20), "+
 				"amount real, description varchar(100))");
-		
+		Log.i(TAG,"Table income created");
 	}
 
 	@Override
@@ -46,7 +49,15 @@ public class IncomeDataBaseHelper extends SQLiteOpenHelper {
 		cv.put(COLUMN_INCOME_DATE, i.getIncomDate());
 		cv.put(COLUMN_INCOME_AMOUNT, i.getIncom());
 		cv.put(COLUMN_INCOME_DESCRIPTION, i.getTitle());
-		return getWritableDatabase().insert(TABLE_INCOME, null, cv);
+		long response = getWritableDatabase().insert(TABLE_INCOME, null, cv); 
+		
+		if (response > 0) {
+			Log.i(TAG,"income line inserted");
+			return response;
+		} else {
+			Log.i(TAG,"income line with problems");
+			return response;
+		}
 	}
 	
 	public IncomeCursor queryRuns() {
@@ -54,6 +65,12 @@ public class IncomeDataBaseHelper extends SQLiteOpenHelper {
 		Cursor wrapped = getReadableDatabase().query(TABLE_INCOME,
 		null, null, null, null, null, COLUMN_INCOME_DATE + " asc");
 		
+		if (wrapped != null) {
+			Log.i(TAG,"Query Income table returned Cursors");
+		}
+		else {
+			Log.i(TAG,"Query Income table returned nothing :(");
+		}
 		return new IncomeCursor(wrapped);
 	}
 	
