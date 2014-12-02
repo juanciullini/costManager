@@ -29,6 +29,6 @@
         android:paddingRight="4dp"
         android:paddingLeft="4dp"
         android:paddingTop="4dp"
-        android:text="detail" />"
+        android:text="detail" />
 
 </RelativeLayout>
