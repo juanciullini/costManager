@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.june.costmanager.classes.Incoming;
+import com.june.costmanager.classes.Item;
 
 public class IncomeDataBaseHelper extends SQLiteOpenHelper {
 
@@ -43,7 +43,7 @@ public class IncomeDataBaseHelper extends SQLiteOpenHelper {
 		
 	}
 	
-	public long insertIncome (Incoming i) {
+	public long insertIncome (Item i) {
 		ContentValues cv = new ContentValues();
 		cv.put(COLUMN_INCOME_ID, i.getId().toString());
 		cv.put(COLUMN_INCOME_DATE, i.getIncomDate());
@@ -88,10 +88,10 @@ public class IncomeDataBaseHelper extends SQLiteOpenHelper {
 		* Returns an Incoming object configured for the current row,
 		* or null if the current row is invalid.
 		*/
-		public Incoming getIncome() {
+		public Item getIncome() {
 			if (isBeforeFirst() || isAfterLast())
 				return null;
-			Incoming income = new Incoming();
+			Item income = new Item();
 			
 			UUID incomeId = UUID.fromString(getString(getColumnIndex(COLUMN_INCOME_ID)));
 			income.setId(incomeId);

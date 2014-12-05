@@ -14,7 +14,7 @@ public class IncomList {
 	private static final String TAG = "IncomeList";
 	//private static final String FILENAME = "incomes.json";
 	
-	private ArrayList<Incoming> mIncoms;
+	private ArrayList<Item> mIncoms;
 	private IncomeJSONSerializer mSerializer;
 	
 	private IncomeCursor mIncomeCursor;
@@ -47,7 +47,7 @@ public class IncomList {
 		return sIncomList;
 	}
 
-	public ArrayList<Incoming> getIncoms() {
+	public ArrayList<Item> getIncoms() {
 		return mIncoms;
 	}
 	
@@ -55,15 +55,15 @@ public class IncomList {
 		return mIncomeCursor;
 	}
 
-	public Incoming getIncom(UUID id) {
-		for (Incoming i : mIncoms) {
+	public Item getIncom(UUID id) {
+		for (Item i : mIncoms) {
 			if(i.getId().equals(id))
 				return i;
 		}
 		return null;
 	}
 	
-	public void setIncome(Incoming incom) {
+	public void setIncome(Item incom) {
 		mIncoms.add(incom);
 	}
 	

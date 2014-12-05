@@ -28,9 +28,9 @@ public class IncomeJSONSerializer {
 		mFilename = filename;
 	}
 	
-	public ArrayList<Incoming> loadIncomes ()  throws JSONException, IOException {
+	public ArrayList<Item> loadIncomes ()  throws JSONException, IOException {
 		
-		ArrayList<Incoming> incomes = new ArrayList<Incoming>();
+		ArrayList<Item> incomes = new ArrayList<Item>();
 		BufferedReader reader = null;
 		
 		try {
@@ -47,7 +47,7 @@ public class IncomeJSONSerializer {
 			JSONObject array = (JSONObject) new JSONTokener(jsonString.toString())
 			.nextValue();
 			
-			incomes.add(new Incoming(array));
+			incomes.add(new Item(array));
 			
 			// Build the array of incomes from JSONObjects
 			//for (int i = 0; i < array.length(); i++) {
@@ -67,7 +67,7 @@ public class IncomeJSONSerializer {
 		return incomes;
 	}
 	
-	public void saveIncome(Incoming income) throws JSONException, IOException {
+	public void saveIncome(Item income) throws JSONException, IOException {
 		Writer writer = null;
 		
 		try {
@@ -82,10 +82,10 @@ public class IncomeJSONSerializer {
 		}
 	}
 	
-	public void saveIncomes(ArrayList<Incoming> incomes) throws JSONException, IOException {
+	public void saveIncomes(ArrayList<Item> incomes) throws JSONException, IOException {
 		
 		JSONArray array = new JSONArray();
-		for (Incoming i : incomes)
+		for (Item i : incomes)
 			array.put(i.toJson());
 		
 		Writer writer = null;

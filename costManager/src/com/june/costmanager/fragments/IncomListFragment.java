@@ -29,7 +29,7 @@ import android.widget.TextView;
 import com.june.costmanager.IncomePagerActivity;
 import com.june.costmanager.R;
 import com.june.costmanager.classes.IncomList;
-import com.june.costmanager.classes.Incoming;
+import com.june.costmanager.classes.Item;
 import com.june.costmanager.helpers.IncomeDataBaseHelper.IncomeCursor;
 import com.june.costmanager.helpers.SQLiteCursorLoader;
 
@@ -66,7 +66,7 @@ public class IncomListFragment extends ListFragment implements LoaderCallbacks<C
 	
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Incoming income = ((IncomeAdapter)(getListAdapter())).getItem(position);
+		Item income = ((IncomeAdapter)(getListAdapter())).getItem(position);
 		// start new incoming class
 		Intent i = new Intent(getActivity(), IncomePagerActivity.class);
 		i.putExtra(IncomeFragment.EXTRA_INCOME_ID, income.getId());
@@ -102,7 +102,7 @@ public class IncomListFragment extends ListFragment implements LoaderCallbacks<C
 			IncomList.get(getActivity()).setIncome(income);
 			((IncomeAdapter)getListAdapter()).notifyDataSetChanged();*/
 			
-			Incoming income = new Incoming();
+			Item income = new Item();
 			
 			Double amount = (Double)data.getSerializableExtra(DatePicketFragment.BALANCE);
 			income.setIncom(amount);
@@ -142,9 +142,9 @@ public class IncomListFragment extends ListFragment implements LoaderCallbacks<C
 		}
 	}
 
-	private class IncomeAdapter extends ArrayAdapter<Incoming> {
+	private class IncomeAdapter extends ArrayAdapter<Item> {
 		
-		public IncomeAdapter(ArrayList<Incoming> incomes) {
+		public IncomeAdapter(ArrayList<Item> incomes) {
 			super(getActivity(), 0, incomes);
 		}
 		
@@ -155,7 +155,7 @@ public class IncomListFragment extends ListFragment implements LoaderCallbacks<C
 				convertView = getActivity().getLayoutInflater()
 						.inflate(R.layout.list_item, null);
 			}
-			Incoming i = getItem(position);
+			Item i = getItem(position);
 			TextView titleTextView =
 				(TextView)convertView.findViewById(R.id.incomeTitle_list_item_TextView);
 			titleTextView.setText(i.getTitle());
@@ -205,7 +205,7 @@ public class IncomListFragment extends ListFragment implements LoaderCallbacks<C
 		@Override
 		public void bindView(View view, Context context, Cursor cursor) {
 			// Get the run for the current row
-			Incoming i = mIncomeCursor.getIncome();
+			Item i = mIncomeCursor.getIncome();
 			
 			// Set up the start date text view
 			TextView titleTextView = (TextView)view.findViewById(R.id.incomeTitle_list_item_TextView);

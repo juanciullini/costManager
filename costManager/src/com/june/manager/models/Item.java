@@ -42,5 +42,10 @@ public class Item {
 	public void setType(int type) {
 		mType = type;
 	}
+	@Override
+	public String toString() {
+		return "Amount: "+mAmount+" Date: "+mDate.toString();
+		
+	}
 
 }

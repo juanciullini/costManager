@@ -14,7 +14,7 @@ import android.widget.Button;
 
 import com.june.costmanager.IncomeListActivity;
 import com.june.costmanager.R;
-import com.june.costmanager.classes.Incoming;
+import com.june.costmanager.classes.Item;
 import com.june.costmanager.helpers.IncomeDataBaseHelper;
 
 public class BalanceFragment extends Fragment {
@@ -114,7 +114,7 @@ public class BalanceFragment extends Fragment {
 			} */
 			
 			// Ahora lo voy a hacer solo para incoming, para ver como guarda en SQLITE
-			Incoming income = new Incoming();
+			Item income = new Item();
 			
 			Double amount = (Double)data.getSerializableExtra(DatePicketFragment.BALANCE);
 			income.setIncom(amount);

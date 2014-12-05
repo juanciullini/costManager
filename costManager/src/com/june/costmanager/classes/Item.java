@@ -5,7 +5,7 @@ import java.util.UUID;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Incoming {
+public class Item {
 	
 	private static final String JSON_AMOUNT = "amount";
 	private static final String JSON_DATE = "date";
@@ -15,11 +15,11 @@ public class Incoming {
 	private String mIncomDate;
 	private UUID mId;
 	
-	public Incoming() {
+	public Item() {
 		mId = UUID.randomUUID();
 	}
 	
-	public Incoming (JSONObject json) throws JSONException {
+	public Item (JSONObject json) throws JSONException {
 		mId = UUID.fromString(json.getString(JSON_ID));
 		if (json.has(JSON_AMOUNT))
 			mIncom = json.getDouble(JSON_AMOUNT);

@@ -11,13 +11,13 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.june.costmanager.classes.IncomList;
-import com.june.costmanager.classes.Incoming;
+import com.june.costmanager.classes.Item;
 import com.june.costmanager.fragments.IncomeFragment;
 
 public class IncomePagerActivity extends FragmentActivity {
 	
 	private ViewPager mViewPager;
-	private ArrayList<Incoming> mIncomes;
+	private ArrayList<Item> mIncomes;
 	
 	@Override 
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class IncomePagerActivity extends FragmentActivity {
 			
 			@Override
 			public Fragment getItem(int arg0) {
-				Incoming i = mIncomes.get(arg0);
+				Item i = mIncomes.get(arg0);
 				return IncomeFragment.newInstance(i.getId());
 			}
 		});
@@ -58,7 +58,7 @@ public class IncomePagerActivity extends FragmentActivity {
 			
 			@Override
 			public void onPageSelected(int pos) {
-				Incoming income = mIncomes.get(pos);
+				Item income = mIncomes.get(pos);
 				if (income.getTitle() != null) {
 					setTitle(income.getTitle()); 
 				}

@@ -7,7 +7,7 @@
     android:orientation="vertical" >
 
     <DatePicker
-        android:id="@+id/dialog_box"
+        android:id="@+id/dialog_box_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:calendarViewShown="false" >
@@ -16,5 +16,8 @@
 	
     <EditText
         android:id="@+id/edit_amount"
-        style="@style/item_amount" />   
+        style="@style/item_amount" />
+    <EditText
+        android:id="@+id/edit_description"
+        style="@style/item_description" />    
 </LinearLayout>

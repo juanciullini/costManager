@@ -16,12 +16,12 @@ import android.widget.TextView;
 
 import com.june.costmanager.R;
 import com.june.costmanager.classes.IncomList;
-import com.june.costmanager.classes.Incoming;
+import com.june.costmanager.classes.Item;
 
 @TargetApi(11)
 public class IncomeFragment extends Fragment {
 	
-	private Incoming mIncome;
+	private Item mIncome;
 	private TextView mTitle;
 	
 	public static final String EXTRA_INCOME_ID = "com.june.costmanager.classes.Incoming.incoming_id";
